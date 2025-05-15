@@ -46,6 +46,7 @@ while tries > 0:
     elif guess > number_to_guess:
         print("Too high! Try again.")
     else:
+        print("")
         print("Congratulations! You guessed the number!")
         break
     tries -= 1
@@ -53,4 +54,10 @@ if tries == 0:
     print(f"Sorry, you've run out of tries. The number was {number_to_guess}.")
 print("Thanks for playing the guessing game, " + first_name + "!")
 print("I hope you had fun!")
+print("")
+print("_________________________")
+print("Follow me on Bluesky @madebydanny.uk")
+print("Fork this project on GitHub! @ therealfuntimeswithdanny/python-playground")
+print("_________________________")
 print("End of Python Script")
+print("Code is open source and free to use!")
