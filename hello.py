@@ -31,6 +31,7 @@ print("Thanks for playing, " + first_name +"!")
 
 input("Let's play another game?")
 print("Great! Let's play again!")
+print("")
 print("This time, let's play a guessing game.")
 print("I will think of a number between 1 and 100, and you have to guess it!")
 print("You have 13 tries to guess the number.")
