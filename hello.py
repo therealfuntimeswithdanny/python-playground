@@ -12,6 +12,19 @@ print("Your data is stored locally and not shared with anyone.")
 first_name = input("What is your first name? ")
 print("Hello " + first_name + ", nice to meet you!")
 print("")
+import os
+
+def run_about():
+    user_input = input("Do you want to learn more about me? (type yes or no)").strip().lower()
+    if user_input == "yes":
+        os.system("python about.py")  # Runs the about.py file
+    elif user_input == "no":
+        print("Skipping execution.")
+    else:
+        print("Invalid input. Please type 'yes' or 'no'.")
+
+run_about()
+print("")
 print("Let's play a game, " + first_name + "!")
 print("It's time to roll the dice three times and see which number is the highest! Are you ready?")
 

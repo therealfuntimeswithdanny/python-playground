@@ -1,45 +1,47 @@
+import tkinter as tk
 import random
 
-def generate_random_number(start=1, end=100):
-    """
-    Generate a random integer between 'start' and 'end' (inclusive).
-    
-    Parameters:
-    start (int): The lowest possible integer.
-    end (int): The highest possible integer.
-    
-    Returns:
-    int: A random integer between start and end.
-    """
-    return random.randint(start, end)
-
-if __name__ == "__main__":
-    print("=== Random Number Generator ===")
-    
-    # Optionally, let the user customize the range
+def generate_number():
     try:
-        start = int(input("Enter the start of the range: "))
-        end = int(input("Enter the end of the range: "))
+        # Get the starting and ending values from the entry widgets
+        start = int(start_entry.get())
+        end = int(end_entry.get())
+
+        # Validate that the start of the range is not greater than the end
+        if start > end:
+            result_label.config(text="Error: Start must be ≤ End")
+            return
+
+        # Generate and display the random number
+        number = random.randint(start, end)
+        result_label.config(text=f"Random number: {number}")
     except ValueError:
-        print("Invalid input! Please enter integer values.")
-        exit(1)
-        
-    if start > end:
-        print("Error: The start must be less than or equal to the end.")
-        exit(1)
-    
-    while True:
-        number = generate_random_number(start, end)
-        print(f"\nYour random number is: {number}")
-        
-        # Ask if the user would like to generate another number
-        again = input("\nWould you like to generate a new number? (y/n): ").strip().lower()
-        if again not in ('y', 'yes'):
-            print("Thanks for using the Random Number Generantor! Goodbye.")
-            print("_________________________")
-            print("Follow me on Bluesky @madebydanny.uk")
-            print("Fork this project on GitHub! @ therealfuntimeswithdanny/python-playground")
-            print("_________________________")
-            print("End of Python Script")
-            print("Code is open source and free to use!")
-            break
+        result_label.config(text="Invalid input! Please enter valid integers.")
+
+# Initialize the main window
+root = tk.Tk()
+root.title("Number Generator")
+root.geometry("300x200")  # Set a fixed size for the window
+
+# Create and position the label and entry for the start of the range
+start_label = tk.Label(root, text="Start of Range:")
+start_label.grid(row=0, column=0, padx=10, pady=10, sticky=tk.W)
+start_entry = tk.Entry(root)
+start_entry.grid(row=0, column=1, padx=10, pady=10)
+
+# Create and position the label and entry for the end of the range
+end_label = tk.Label(root, text="End of Range:")
+end_label.grid(row=1, column=0, padx=10, pady=10, sticky=tk.W)
+end_entry = tk.Entry(root)
+end_entry.grid(row=1, column=1, padx=10, pady=10)
+
+# Create and position the "Generate" button
+generate_button = tk.Button(root, text="Generate", command=generate_number)
+generate_button.grid(row=2, column=0, columnspan=2, pady=10)
+
+# A label to display the result or error messages
+result_label = tk.Label(root, text="Developed by Daniel Morrisey, madebydanny.uk")
+result_label.grid(row=3, column=0, columnspan=2, padx=10, pady=10)
+
+# Start the GUI event loop
+root.mainloop()
